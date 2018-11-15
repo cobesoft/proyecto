@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+    <link href="./css/styles.css" rel="stylesheet"/>
+    <title>Bancoop</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="header__logo"><img src="./img/logo.png" alt=""/></h1>
+        <h2 class="header__slogan"><i>El Banco del Pueblo</i></h2>
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__navItem"><a href="index.html">Home</a></li>
+            <li class="header__navItem"><a href="#">Creditos</a></li>
+            <li class="header__navItem"><a href="#">Leasing</a></li>
+            <li class="header__navItem"><a href="#">Ahorros</a></li>
+            <li class="header__navItem"><a href="#">Servicio al Cliente</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="contenido">
+        <section class="sidebar">
+          <form class="login" action="" method="">
+            <h3 class="titulo">Solicita tu cita</h3>
+            <fieldset class="login__fieldset">
+              <label for="cuenta">Cuenta</label>
+              <input class="login__input" mane="cuenta" placeholder="Numero de tu Cuenta" type="text" tabindex="1" required="required" autofocus="autofocus"/>
+            </fieldset>
+            <fieldset class="login__fieldset">
+              <label for="tipo">Tipo</label>
+              <select class="login__input" name="tipo" placeholder="Tipo de Cuenta">
+                <option value="ahorros">Cuenta de Ahorros</option>
+                <option value="corriente">Cuenta Corriente</option>
+              </select>
+            </fieldset>
+            <fieldset class="login__fieldset">
+              <label for="clave">Clave</label>
+              <input class="login__input" mane="clave" placeholder="Contraseña" type="password" tabindex="3" required="required"/>
+            </fieldset>
+            <fieldset class="login__fieldset">
+              <button class="login__button" name="enviar" type="submit" data-submit="...Enviando">Enviar</button>
+            </fieldset>
+          </form>
+          <section class="transacciones">
+            <h3 class="titulo">Zona de Transacciones</h3>
+            <ul>
+              <li class="transacciones__item"><a href="">Banca Personal</a></li>
+              <li class="transacciones__item"><a href="">Banca Empresarial</a></li>
+              <li class="transacciones__item"><a href="">Banca Seguros</a></li>
+              <li class="transacciones__item"><a href="">Pago de Facturas</a></li>
+            </ul>
+          </section>
+          <section class="tarjetas">
+            <h3 class="titulo">Tarjetas de Credito</h3>
+            <ul>
+              <li class="tarjetas__item"><a href="">Credi Visa</a></li>
+              <li class="tarjetas__item"><a href="">Credi MasterCard</a></li>
+            </ul>
+          </section>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="contenido">
+              <article class="entrada">
+                <h2 class="entrada__titulo">Nuestros Productos</h2><img class="entrada__img" src="./img/tarjetas.jpg" alt=""/>
+                <p class="entrada__parrafo">
+                  Conoce todos los productos que el banco tiene disponibles para ti.
+                  Solicitalo de una forma facil y rapida. Solo debes escoger el prooducto
+                  e ingresar tus datos de Contacto. En poco tiempo un asesor se comunicara contigo.
+                </p><a class="entrada__link" href="#">Leer Mas</a>
+              </article>
+              <article class="entrada">
+                <h2 class="entrada__titulo">Ahorro Estudiantil</h2><img class="entrada__img" src="./img/credito-estudiantil.jpg" alt=""/>
+                <p class="entrada__parrafo">
+                  Desde ya puedes empezar a ahorrar para la educación de 
+                  tus hijos, complementándola con un seguro estudiantil
+                  y con sorteos de mutiples premios
+                </p><a class="entrada__link" href="#">Leer Mas</a>
+              </article>
+            </div>
+          </div>
+          <div class="row">
+            <div class="contenido">
+              <article class="entrada">
+                <h2 class="entrada__titulo">Credito Vehiculos</h2><img class="entrada__img" src="./img/descarga.jpg" alt=""/>
+                <p class="entrada__parrafo">
+                  Solicita tu crédito o Leasing para financiar la compra
+                  de Vehiculos nuevos o usados, particulares o comerciales
+                  directamente o a traves de un concesionario.
+                </p><a class="entrada__link" href="#">Leer Mas</a>
+              </article>
+              <article class="entrada">
+                <h2 class="entrada__titulo">Credito Hipotecario</h2><img class="entrada__img" src="./img/hipo.png" alt=""/>
+                <p class="entrada__parrafo">
+                  Un inmueble propio se ha convertido en el más anhelado 
+                  sueño. Por eso es nesesario eligir el inmueble que esté acorde
+                  a las espectativas al igual que el crédito que mejor se adapte
+                  a tus posibilidades
+                </p><a class="entrada__link" href="#">Leer Mas</a>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="footer full-width">
+        <h3 class="footer__titulo">Bancoop - Entidad Financiera</h3><span class="footer__info">Linea Gratuita 01 8000 000015</span>
+      </footer>
+    </div>
+  </body>
+</html>
+
