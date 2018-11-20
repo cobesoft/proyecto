@@ -57,7 +57,7 @@ li{
   }
 
 .header__nav{
-    margin-top: 1em;    
+    margin-top: 1em;
   }
 
 .header__navItem{
@@ -100,13 +100,13 @@ li{
           flex-direction: row;
 }
 
-.sidebar{  
+.sidebar{
   width: 35%;
   padding:1em;
 }
 
 .content{
-  width: 65%;  
+  width: 65%;
   padding: 1em;
 }
 
@@ -180,14 +180,14 @@ li{
           flex: auto;
 }
 
-.entrada__titulo{    
+.entrada__titulo{
     margin:0.5em 0;
     font-weight: 200;
   }
 
 .entrada__img{
     width: 80%;
-    border-radius: 15px; 
+    border-radius: 15px;
   }
 
 .entrada__parrafo{
@@ -219,4 +219,36 @@ li{
 
 .full-width{
   width: 100%;
+}
+
+/* Remueve el margen básico del menú */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Tamaño cuando la pantalla está 100% */
+.row.content {height: 450px}
+
+/* Color Capa 1 Fondo */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f2;
+  height: 100%;
+}
+
+/* Color Capa 2 fondo */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* Pantallas pequeñas */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
 }
