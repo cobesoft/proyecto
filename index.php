@@ -1,33 +1,61 @@
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
-    <link href="./css/styles.css" rel="stylesheet"/>
-    <title>Bancoop</title>
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <h1 class="header__logo"><img src="./img/banner.jpg" alt=""/></h1>
-        <h2 class="header__slogan"><i>El Banco de Nosotros</i></h2>
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li class="header__navItem"><a href="index.html">Inicio</a></li>
-            <li class="header__navItem"><a href="#">Creditos</a></li>
-            <li class="header__navItem"><a href="#">entrar</a></li>
-            <li class="header__navItem"><a href="#">Ahorros</a></li>
-            <li class="header__navItem"><a href="#">Servicio al Cliente</a></li>
-          </ul>
-        </nav>
-      </header>
-      <div class="contenido">
-        <?php include "inicio.php"; ?>
+<head>
+  <title>Cobe Soft</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!--<menu></menu> -->
 
-      </div>
-      <footer class="footer full-width">
-        <h3 class="footer__titulo">CobeSoft - 2018. Derechos reservados</h3><span class="footer__info">Linea Gratuita 01 8000 000104</span>
-      </footer>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">CobeSoft</a>
     </div>
-  </body>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Inicio</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gestión de Productos</a></li>
+        </ul>
+      </li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gestión de Proveedores</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gestión de Clientes</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Gestión de Usuarios</a></li>
+        </ul>
+      </li>
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Contacto<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Reportar Novedad</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+    </ul>
+  </div>
+</nav>
+<div id= "formulario">
+<?php include "inicio.php" ?>
+</div>
+<!--Pie de pagina -->
+<footer class="container-fluid text-center">
+  <div align="center"><img src="img\CobeSoft.png" alt="Supercundi" style="width:20%;">
+  </div>
+  <p>2018.Derechos Reservados</p>
+</footer>
+
+</body>
