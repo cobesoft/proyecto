@@ -49,7 +49,7 @@
   </div>
 </nav>
 <div id= "formulario">
-<?php include "inicio.php" ?>
+<?php include "pages/inicio.php" ?>
 </div>
 <!--Pie de pagina -->
 <footer class="container-fluid text-center">
