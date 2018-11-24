@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,25 +17,25 @@
       <a class="navbar-brand" href="#">CobeSoft</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Inicio</a></li>
+      <li class="active"><a href="pages/inicio.php" class="opciones">Inicio</a></li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Gestión de Productos</a></li>
+          <li><a href="pages/producto.php" class="opciones">Gestión de Productos</a></li>
         </ul>
       </li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Gestión de Proveedores</a></li>
+          <li><a href="pages/proveedores.php" class="opciones">Gestión de Proveedores</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Gestión de Clientes</a></li>
+          <li><a href="pages/clientes.php" class="opciones">Gestión de Clientes</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Gestión de Usuarios</a></li>
+          <li><a href="pages/usuarios.php" class="opciones">Gestión de Usuarios</a></li>
         </ul>
       </li>
            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Contacto<span class="caret"></span></a>
@@ -48,9 +49,12 @@
     </ul>
   </div>
 </nav>
-<div id= "formulario">
-<?php include "pages/inicio.php" ?>
+<div>
+  <div id= "formulario">
+  <?php include "pages/inicio.php" ?>
+  </div>  
 </div>
+
 <!--Pie de pagina -->
 <footer class="container-fluid text-center">
   <div align="center"><img src="img\CobeSoft.png" alt="Supercundi" style="width:20%;">
