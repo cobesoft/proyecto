@@ -1,0 +1,9 @@
+$(document).ready(function()
+{
+$(".opciones").click(function(e)
+{
+  e.preventDefault();
+  $("#formulario").load($(this).attr("href"));
+}
+)
+});
