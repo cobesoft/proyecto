@@ -57,7 +57,7 @@
 
 <!--Pie de pagina -->
 <footer class="container-fluid text-center">
-  <div align="center"><img src="img\cobesoft.png" alt="Supercundi" style="width:20%;">
+  <div align="center"><img src="img\cobesoft.png" alt="cobesoft" style="width:20%;">
   </div>
   <p>2018.Derechos Reservados</p>
 </footer>
