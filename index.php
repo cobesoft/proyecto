@@ -52,12 +52,12 @@
 <div>
   <div id= "formulario">
   <?php include "pages/inicio.php" ?>
-  </div>  
+  </div>
 </div>
 
 <!--Pie de pagina -->
 <footer class="container-fluid text-center">
-  <div align="center"><img src="img\CobeSoft.png" alt="Supercundi" style="width:20%;">
+  <div align="center"><img src="img\cobesoft.png" alt="Supercundi" style="width:20%;">
   </div>
   <p>2018.Derechos Reservados</p>
 </footer>
