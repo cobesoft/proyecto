@@ -3,8 +3,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -52,7 +53,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+            <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
           </ul>
         </div>
         </div>
@@ -65,10 +66,15 @@
       </div>
     </div>
 
+    <div id="login_popup">
+      <?php include "pages/login.php" ?>
+    </div>
+
     <!--Pie de pagina -->
 
     <div id="footer" class="text-center">
-      <div align="center"><img src="img\cobesoft.png" alt="Supercundi" style="width:20%;" />
+      <div align="center">
+        <img src="img\cobesoft.png" alt="Logo CobeSoft" style="width:20%;" />
       </div>
       <p>2018.Derechos Reservados</p>
     </div>

@@ -2,7 +2,7 @@
 <div align="center">
   <div class="container">
     <div class="jumbotron">
-      <h1 class="shine">¡Bienvenido!</h1>
+      <h1>¡Bienvenido!</h1>
       <p>Sistema de gestión de inventarios CobeSoft</p>
     </div>
   </div>
