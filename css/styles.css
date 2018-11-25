@@ -5,18 +5,25 @@ body {
   height: 100%;
 }
 
+h1 {
+  color: gray;
+  text-shadow: 2px 2px 4px gray;
+  font-weight: bolder;
+}
+
+h2 {
+  color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
 #container {
   min-height: 100%;
   position: relative;
 }
 
-#header {
-  padding: 10px;
-}
-
 #body {
   padding: 10px;
-  padding-bottom: 125px;
+  padding-bottom: 135px;
 }
 /* Remueve el margen básico del menú */
 .navbar {
@@ -54,13 +61,6 @@ body {
   }
   .row.content {height:auto;}
 }
-/*Sombra Form Productos*/
-  .caja_sombra
-{
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px 8px #888888;
-}
 
 .img-carousel {
   width: 100%;
@@ -73,7 +73,7 @@ body {
 
 .form-container {
   background-color: #00ade5;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 25px;
   border-radius: 25px;
   box-shadow: 5px 10px 8px #888888;
