@@ -129,3 +129,14 @@ h2 {
 .back { text-align: left; margin-top:10px;}
 .back a {color: #444444; font-size: 13px;text-decoration: none;}
 /* Fin Estilos login */
+
+
+#tooltips_content {
+  display: none;
+}
+
+#Mapa_Cobertura {
+  background-image: linear-gradient(to bottom right, red , blue);
+  border-radius: 25px;
+  box-shadow: 5px 10px 8px #888888;
+}

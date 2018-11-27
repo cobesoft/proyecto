@@ -6,6 +6,8 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.mapify.css">
+  <script type="text/javascript" src="js/jquery.mapify.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
