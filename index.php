@@ -48,9 +48,9 @@
                 <li><a href="pages/usuarios.php" class="opciones">Gestión de Usuarios</a></li>
               </ul>
             </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Contacto<span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Reportar Novedad</a></li>
+                <li><a href="pages/ventas.php" class"opciones">Reporte Ventas</a></li>
               </ul>
             </li>
           </ul>
