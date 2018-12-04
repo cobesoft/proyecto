@@ -8,7 +8,9 @@ $(document).ready(function() {
 
   $("#login").bind('click', function(e){
     e.preventDefault();
-    $("#login_popup").bPopup();
+    $("#custom_popup").bPopup({
+      loadUrl: 'pages/login.php'
+    });
   });
 
   renderMap();
@@ -18,7 +20,7 @@ $(document).ready(function() {
 function renderMap() {
 	$("img[usemap]").mapify({
   	popOver: {
-  		content: function(zone){ 
+  		content: function(zone){
   			return $("#"+zone.attr("data-title")).html();
   		},
 		delay: 0.7,

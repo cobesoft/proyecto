@@ -1,6 +1,7 @@
 <head>
   <title>Cobe Soft</title>
-  <meta charset="utf-8">
+  <!-- <meta charset="utf-8"> -->
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -30,7 +31,7 @@
             <li class="active"><a href="pages/inicio.php" class="opciones">Inicio</a></li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/producto.php" class="opciones">Gestión de Productos</a></li>
+                <li><a href="pages/gestion_producto.php" class="opciones">Gestión de Productos</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span class="caret"></span></a>
@@ -68,8 +69,7 @@
       </div>
     </div>
 
-    <div id="login_popup">
-      <?php include "pages/login.php" ?>
+    <div id="custom_popup">
     </div>
 
     <!--Pie de pagina -->
