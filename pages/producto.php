@@ -1,6 +1,6 @@
 <div class="form-container">
   <div class="container">
-    <h2>Producto</h2>
+    <h2 id="producto_titulo">Producto</h2>
     <form action="index.php" method="post">
       <div class="row">
         <div class="col-sm-2">
@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="submit" class="btn btn-primary" id="producto_boton">Agregar</button>
         </div>
       </div>
     </form>

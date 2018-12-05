@@ -8,8 +8,8 @@ $(document).ready(function() {
 
   $("#login").bind('click', function(e){
     e.preventDefault();
-    $("#custom_popup").bPopup({
-      loadUrl: 'pages/login.php'
+    $("#custom_popup").load('pages/login.php', function() {
+      $("#custom_popup").bPopup();
     });
   });
 
@@ -29,4 +29,34 @@ function renderMap() {
 		width: "260px"
 	}
   });
+}
+
+function mostrarModal(nombre, tipo, valor=null) {
+  switch (tipo) {
+    case 'n':
+      $("#custom_popup").load('pages/'+nombre+'.php', function() {
+        $("#custom_popup").bPopup();
+        $("#"+nombre+"_titulo").text("Agregar " + nombre);
+        $("#"+nombre+"_boton").text("Agregar nuevo " + nombre);
+      });
+      break;
+    case 'e':
+      $("#custom_popup").load('pages/'+nombre+'.php', function() {
+        $("#custom_popup").bPopup();
+        $("#"+nombre+"_titulo").text("Editar " + nombre);
+        $("#"+nombre+"_boton").text("Guardar cambios en " + nombre);
+      });
+      break;
+    case 'el':
+      $("#custom_popup").load('pages/eliminar.php', function() {
+        $("#custom_popup").bPopup();
+        $("#titulo_eliminar").text("Eliminar " + nombre);
+        $("#texto_eliminar").text("¿Desea eliminar " + nombre + "?");
+        $("#cerrar").bind('click', function() {
+          $("#custom_popup").bPopup().close();
+        });
+      });
+      break;
+
+  }
 }

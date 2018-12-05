@@ -5,7 +5,7 @@ $consulta = new Consultas();
 ?>
 <div class="container">
   <h2>GESTIÓN DE PRODUCTOS
-    <a href="#" class="btn btn-primary a-btn-slide-text" id="producto_n">
+    <a href="#" class="btn btn-primary a-btn-slide-text" id="producto_n" onclick="mostrarModal('producto','n')">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         <span><strong>Nuevo</strong></span>
     </a></h2>
@@ -28,19 +28,19 @@ $consulta = new Consultas();
       $resultado = $consulta->consultaProductos();
       foreach($resultado as $row) {
         echo "<tr>
-        <td>".$row['ProId']."</td>
-        <td>".$row['ProNombre']."</td>
-        <td>".$row['ProPrecio']."</td>
-        <td>".$row['ProDescripcion']."</td>
-        <td>".$row['proveedor']."</td>
-        <td>".$row['tipoProducto']."</td>
-        <td>".$row['ProCantMax']."</td>
-        <td>".$row['ProCantMin']."</td>
-        <td><a href='#' class='btn btn-primary a-btn-slide-text' id='producto_e'>
+        <td>$row[ProId]</td>
+        <td>$row[ProNombre]</td>
+        <td>$row[ProPrecio]</td>
+        <td>$row[ProDescripcion]</td>
+        <td>$row[proveedor]</td>
+        <td>$row[tipoProducto]</td>
+        <td>$row[ProCantMax]</td>
+        <td>$row[ProCantMin]</td>
+        <td><a href='#' class='btn btn-primary a-btn-slide-text' id='producto_e' onclick='mostrarModal(\"producto\",\"e\",$row[ProId])'>
         <span class='glyphicon glyphicon-edit' aria-hidden='true'></span>
         <span><strong>Editar</strong></span>
         </a></td>
-        <td><a href='#' class='btn btn-primary a-btn-slide-text' id='producto_el'>
+        <td><a href='#' class='btn btn-primary a-btn-slide-text' id='producto_el' onclick='mostrarModal(\"producto\",\"el\",$row[ProId])'>
         <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
         <span><strong>Eliminar</strong></span>
         </a></td>

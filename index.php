@@ -36,22 +36,22 @@
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/proveedores.php" class="opciones">Gestión de Proveedores</a></li>
+                <li><a href="pages/gestion_proveedor.php" class="opciones">Gestión de Proveedores</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/clientes.php" class="opciones">Gestión de Clientes</a></li>
+                <li><a href="pages/gestion_cliente.php" class="opciones">Gestión de Clientes</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/usuarios.php" class="opciones">Gestión de Usuarios</a></li>
+                <li><a href="pages/gestion_usuario.php" class="opciones">Gestión de Usuarios</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/ventas.php" class"opciones">Reporte Ventas</a></li>
+                <li><a href="pages/ventas.php" class="opciones">Reporte Ventas</a></li>
               </ul>
             </li>
           </ul>
