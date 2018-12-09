@@ -1,15 +1,16 @@
 <div class="container">
   <h2>TABLA DE VENTAS</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Factura N.</th>
-        <th>Código de vendedor</th>
-        <th>Mes de la venta</th>
-		<th>Valor en  Col</th>
-	</tr>
-    </thead>
-    <tbody>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Factura N.</th>
+          <th>Código de vendedor</th>
+          <th>Mes de la venta</th>
+          <th>Valor en  Col</th>
+        </tr>
+      </thead>
+      <tbody>
         <tr><td>1</td><td>37144</td><td>1</td><td>1274</td></tr>
         <tr><td>2</td><td>37147</td><td>2</td><td>1827</td></tr>
         <tr><td>3</td><td>37154</td><td>3</td><td>6750</td></tr>
@@ -30,6 +31,7 @@
         <tr><td>18</td><td>37242</td><td>6</td><td>1595</td></tr>
         <tr><td>19</td><td>37245</td><td>1</td><td>2465</td></tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -72,4 +72,76 @@ class Consultas
     }
   }
 
+  function consultaInventario()
+  {
+    try {
+      $database = new Conexion();
+      $db = $database->abrirConexion();
+      $sql = "SELECT  i.InvId, i.InvProId, p.ProNombre, tp.TprTipo, p.ProPrecio,
+                      i.InvCantProd, i.InvFechaCreacion, pv.PrvNombre
+              FROM inventario AS i
+              INNER JOIN producto AS p
+              ON i.InvProId = p.ProId
+              INNER JOIN tipo_producto as tp
+              ON p.ProTprId = tp.TprId
+              INNER JOIN proveedor AS pv
+              ON p.ProPrvId = pv.PrvId
+              ORDER BY p.ProNombre";
+      return $db->query($sql);
+    }catch(PDOException $e) {
+      die("Error: $e");
+    }
+  }
+
+  function consultaMovimiento($id, $tipo)
+  {
+    try {
+      $database = new Conexion();
+      $db = $database->abrirConexion();
+      switch ($tipo) {
+        case 'Facturas de Venta':
+          $sql = "SELECT  i.InvProId, ROUND(p.ProPrecio,2) AS ProPrecio,
+                          ROUND(pf.ProFacPrecio,2) AS ProFacPrecio, pf.ProFacCantidad,
+                          CONCAT(f.FacImpuesto*100,'%') AS impuesto,
+                          ROUND(pf.ProFacPrecio * pf.ProFacCantidad,2) AS total,
+                          f.FacFecha, tv.TvtTipo,
+                          CONCAT(c.CliNombre, ' ', c.CliApellido) AS cliente
+                  FROM inventario AS i
+                  INNER JOIN producto AS p
+                  ON i.InvProId = p.ProId
+                  INNER JOIN producto_factura AS pf
+                  ON p.ProId = pf.ProFacProId
+                  INNER JOIN factura AS f
+                  ON pf.ProFacFacId = f.FacId
+                  INNER JOIN tipo_venta AS tv
+                  ON f.FacTvtId = tv.TvtId
+                  INNER JOIN cliente AS c
+                  ON f.FacCliId = c.CliId
+                  WHERE i.InvId = $id
+                  ORDER BY f.FacFecha";
+          break;
+        case 'Ordenes de Pedido':
+          $sql = "SELECT  i.InvProId, ROUND(p.ProPrecio,2) AS ProPrecio,
+                          ROUND(pp.ProPedPrecio,2) AS ProPedPrecio, pp.ProPedCantidad,
+                          ROUND(pp.ProPedPrecio * pp.ProPedCantidad,2) AS total, pd.PedFecha,
+                          CONCAT(u.UsrNombre, ' ', u.UsrApellido) AS responsable
+                  FROM inventario AS i
+                  INNER JOIN producto AS p
+                  ON i.InvProId = p.ProId
+                  INNER JOIN producto_pedido AS pp
+                  ON p.ProId = pp.ProPedProId
+                  INNER JOIN pedido AS pd
+                  ON pp.ProPedPedId = pd.PedId
+                  INNER JOIN usuario AS u
+                  ON pd.PedUsrId = u.UsrId
+                  WHERE i.InvId = $id
+                  ORDER BY pd.PedFecha";
+          break;
+      }
+      return $db->query($sql);
+    }catch(PDOException $e) {
+      die("Error: $e");
+    }
+  }
+
 }

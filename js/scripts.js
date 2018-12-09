@@ -57,6 +57,14 @@ function mostrarModal(nombre, tipo, valor=null) {
         });
       });
       break;
-
+    case 'l':
+        $("#custom_popup").load('pages/'+nombre+'.php?id='+valor, function() {
+          $("#custom_popup").bPopup();
+          $("#"+nombre+"_titulo").text("Movimientos del Producto " + $('#pro_'+valor).html());
+          $("#cerrar").bind('click', function() {
+            $("#custom_popup").bPopup().close();
+          });
+        });
+      break;
   }
 }

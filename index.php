@@ -29,6 +29,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="pages/inicio.php" class="opciones">Inicio</a></li>
+            <li><a href="pages/inventario.php" class="opciones">Inventario General</a></li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="pages/gestion_producto.php" class="opciones">Gestión de Productos</a></li>
