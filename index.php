@@ -1,6 +1,7 @@
 <head>
   <title>Cobe Soft</title>
-  <meta charset="utf-8">
+  <!-- <meta charset="utf-8"> -->
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -28,29 +29,30 @@
           <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class="active"><a href="pages/inicio.php" class="opciones">Inicio</a></li>
+            <li><a href="pages/inventario.php" class="opciones">Inventario General</a></li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/producto.php" class="opciones">Gestión de Productos</a></li>
+                <li><a href="pages/gestion_producto.php" class="opciones">Gestión de Productos</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/proveedores.php" class="opciones">Gestión de Proveedores</a></li>
+                <li><a href="pages/gestion_proveedor.php" class="opciones">Gestión de Proveedores</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/clientes.php" class="opciones">Gestión de Clientes</a></li>
+                <li><a href="pages/gestion_cliente.php" class="opciones">Gestión de Clientes</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/usuarios.php" class="opciones">Gestión de Usuarios</a></li>
+                <li><a href="pages/gestion_usuario.php" class="opciones">Gestión de Usuarios</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="pages/ventas.php" class"opciones">Reporte Ventas</a></li>
+                <li><a href="pages/ventas.php" class="opciones">Reporte Ventas</a></li>
               </ul>
             </li>
           </ul>
@@ -68,8 +70,7 @@
       </div>
     </div>
 
-    <div id="login_popup">
-      <?php include "pages/login.php" ?>
+    <div id="custom_popup">
     </div>
 
     <!--Pie de pagina -->

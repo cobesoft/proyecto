@@ -1,6 +1,6 @@
 <div class="form-container">
   <div class="container">
-    <h2>Producto</h2>
+    <h2 id="producto_titulo">Producto</h2>
     <form action="index.php" method="post">
       <div class="row">
         <div class="col-sm-2">
@@ -17,10 +17,22 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
           <div class="form-group">
             <label for="descprod">Descripción</label>
-            <input type="text" class="form-control" id="descprod" width="300px">
+            <input type="text" class="form-control" id="descprod">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="tipoProd">Tipo Producto</label>
+            <select class="form-control" id="tipoProd">
+              <option value="" disabled selected>Seleccione Tipo</option>
+              <option value="">Abarrotes</option>
+              <option value="">Licores</option>
+              <option value="">Aseo Hogar</option>
+              <option value="">Higiene Personal</option>
+            </select>
           </div>
         </div>
       </div>
@@ -55,7 +67,7 @@
       </div>
       <div class="row">
         <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="submit" class="btn btn-primary" id="producto_boton">Agregar</button>
         </div>
       </div>
     </form>
