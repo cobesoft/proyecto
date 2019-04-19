@@ -45,6 +45,7 @@ function mostrarModal(nombre, tipo, valor=null) {
         $("#custom_popup").bPopup();
         $("#"+nombre+"_titulo").text("Editar " + nombre);
         $("#"+nombre+"_boton").text("Guardar cambios en " + nombre);
+        cargarDatosPopup(nombre, valor);
       });
       break;
     case 'el':
@@ -67,4 +68,17 @@ function mostrarModal(nombre, tipo, valor=null) {
         });
       break;
   }
+}
+
+function cargarDatosPopup(nombre, valor) {
+  $.ajax({
+    url: "src/popup_editar.php",
+    method: "POST",
+    data: {nombre: nombre, valor: valor},
+    dataType: 'json',
+    success: function (response) {
+      for(var key in response[0])
+        $('#'+key).val(response[0][key]);
+    }
+  });
 }

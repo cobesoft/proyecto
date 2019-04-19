@@ -84,6 +84,24 @@ h2 {
   display: none;
 }
 
+.bClose{
+  border-radius: 7px;
+  font: bold 131% sans-serif;
+  padding: 0 6px 2px;
+  background-color: #2b91af;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  position: absolute;
+  right: -7px;
+  top: -7px;
+}
+
+.bClose:hover {
+  background-color: #1e1e1e;
+}
+
 .panel h2{ color:#444444; font-size:30px; margin:0 0 8px 0;}
 .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
 .login-form .form-control {

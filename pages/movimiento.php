@@ -2,6 +2,7 @@
 include_once "../config/consultas.php";
 $consulta = new Consultas();
 ?>
+<a class="bClose">X<a/>
 <div class="main-div" style="width: 90vw;">
     <h2 id="movimiento_titulo">Movimientos del Producto</h2>
     <div class="panel-group" id="accordion" style="overflow-x:auto;">

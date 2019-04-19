@@ -1,3 +1,4 @@
+<a class="bClose">X<a/>
 <div class="login-form">
   <div class="main-div">
     <div class="panel">
