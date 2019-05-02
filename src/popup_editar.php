@@ -20,4 +20,8 @@ switch ($_REQUEST['nombre']) {
         $resultado = $consulta->consultaUsuarios($_REQUEST['valor']);
         echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
         break;
+    case 'perfil':
+        $resultado = $consulta->consultaPerfiles($_REQUEST['valor']);
+        echo json_encode($resultado->fetchAll(PDO::FETCH_ASSOC));
+        break;
 }

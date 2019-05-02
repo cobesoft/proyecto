@@ -82,3 +82,7 @@ function cargarDatosPopup(nombre, valor) {
     }
   });
 }
+
+function listaOpciones(id, opcIds) {
+  $('#'+id).chosen().val(opcIds.split(',')).trigger('chosen:updated');
+}

@@ -9,7 +9,7 @@ class Consultas
           $database = new Conexion();
           $db = $database->abrirConexion();
           $sql = "SELECT e.EstId, e.EstDescripcion
-                  FROM COBE_SOFT.estado as e 
+                  FROM estado as e 
                   ORDER BY e.EstId ";
           return $db->query($sql);
       }catch(PDOException $e) {
@@ -26,10 +26,10 @@ class Consultas
                       p.ProDescripcion, p.ProPrvId, pv.PrvNombre AS proveedor,
                       p.ProTprId, tp.TprTipo AS tipoProducto, p.ProCantMax, 
                       p.ProCantMin, p.ProEstId
-              FROM COBE_SOFT.producto AS p
-              INNER JOIN COBE_SOFT.proveedor AS pv
+              FROM producto AS p
+              INNER JOIN proveedor AS pv
               ON p.ProPrvId = pv.PrvId
-              INNER JOIN COBE_SOFT.tipo_producto AS tp
+              INNER JOIN tipo_producto AS tp
               ON p.ProTprId = tp.TprId ";
       if ($id)
           $sql .= " WHERE p.ProId = $id ";
@@ -45,7 +45,7 @@ class Consultas
             $database = new Conexion();
             $db = $database->abrirConexion();
             $sql = "SELECT TprId, TprTipo 
-                    FROM COBE_SOFT.tipo_producto
+                    FROM tipo_producto
                     ORDER BY TprTipo";
             return $db->query($sql);
         }catch(PDOException $e) {
@@ -59,7 +59,7 @@ class Consultas
       $database = new Conexion();
       $db = $database->abrirConexion();
       $sql = "SELECT p.PrvId, p.PrvNit, p.PrvNombre, p.PrvTelefono, p.PrvDireccion, p.PrvCorreo, p.PrvEstId
-              FROM COBE_SOFT.proveedor AS p ";
+              FROM proveedor AS p ";
       if ($id)
           $sql .= " WHERE p.PrvId = $id ";
       $sql .= " ORDER BY p.PrvNombre ";
@@ -77,7 +77,7 @@ class Consultas
       $sql = "SELECT  c.CliId, c.CliCedula, c.CliNombre, c.CliApellido, 
                       CONCAT(c.CliNombre, ' ', c.CliApellido) AS nombre,
                       c.CliTelefono, c.CliDireccion, c.CliCorreo, CliEstId
-              FROM COBE_SOFT.cliente AS c ";
+              FROM cliente AS c ";
       if ($id)
           $sql .= " WHERE c.CliId = $id ";
       $sql .= " ORDER BY c.CliApellido ";
@@ -96,10 +96,10 @@ class Consultas
                       CONCAT(u.UsrNombre, ' ', u.UsrApellido) AS nombre,
                       u.UsrCorreo, u.UsrFecCreacion, up.UsrPerPerId, p.PerDescripcion, 
                       u.UsrUsuario, up.UsrPerEstId
-              FROM COBE_SOFT.usuario AS u
-              INNER JOIN COBE_SOFT.usuario_perfil as up
+              FROM usuario AS u
+              INNER JOIN usuario_perfil as up
               ON u.UsrId = up.UsrPerUsrId
-              INNER JOIN COBE_SOFT.perfil as p
+              INNER JOIN perfil as p
               ON up.UsrPerPerId = p.PerId ";
       if ($id)
           $sql .= " WHERE u.UsrId = $id ";
@@ -110,14 +110,47 @@ class Consultas
     }
   }
 
-    function consultaPerfiles()
+    function consultaPerfiles($id = null)
     {
         try {
             $database = new Conexion();
             $db = $database->abrirConexion();
-            $sql = "SELECT  p.PerId, p.PerDescripcion
-                    FROM COBE_SOFT.perfil AS p
-                    ORDER BY p.PerDescripcion ";
+            $sql = "SELECT  p.PerId, p.PerDescripcion, p.PerEstId
+                    FROM perfil AS p ";
+            if ($id)
+                $sql .= " WHERE p.PerId = $id ";
+            $sql .= " ORDER BY p.PerDescripcion ";
+            return $db->query($sql);
+        }catch(PDOException $e) {
+            die("Error: $e");
+        }
+    }
+
+    function consultaOpciones($id = null)
+    {
+        try {
+            $database = new Conexion();
+            $db = $database->abrirConexion();
+            $sql = "SELECT o.OpcId, o.OpcNombre, o.OpcUrl, o.OpcIdPadre, o.OpcEstId
+                    FROM opcion AS o ";
+            if ($id)
+                $sql .= " WHERE o.OpcId = $id ";
+            $sql .= " ORDER BY o.OpcNombre ";
+            return $db->query($sql);
+        }catch(PDOException $e) {
+            die("Error: $e");
+        }
+    }
+
+    function consultaPerfilOpciones()
+    {
+        try {
+            $database = new Conexion();
+            $db = $database->abrirConexion();
+            $sql = "SELECT p.PerId, p.PerDescripcion, po.PerOpcOpcIds
+                    FROM perfil AS p
+                    LEFT OUTER JOIN perfil_opciones AS po
+                    ON p.PerId = po.PerOpcPerId ";
             return $db->query($sql);
         }catch(PDOException $e) {
             die("Error: $e");
@@ -131,12 +164,12 @@ class Consultas
       $db = $database->abrirConexion();
       $sql = "SELECT  i.InvId, i.InvProId, p.ProNombre, tp.TprTipo, p.ProPrecio,
                       i.InvCantProd, i.InvFechaCreacion, pv.PrvNombre
-              FROM COBE_SOFT.inventario AS i
-              INNER JOIN COBE_SOFT.producto AS p
+              FROM inventario AS i
+              INNER JOIN producto AS p
               ON i.InvProId = p.ProId
-              INNER JOIN COBE_SOFT.tipo_producto as tp
+              INNER JOIN tipo_producto as tp
               ON p.ProTprId = tp.TprId
-              INNER JOIN COBE_SOFT.proveedor AS pv
+              INNER JOIN proveedor AS pv
               ON p.ProPrvId = pv.PrvId
               ORDER BY p.ProNombre";
       return $db->query($sql);
@@ -158,16 +191,16 @@ class Consultas
                           ROUND(pf.ProFacPrecio * pf.ProFacCantidad,2) AS total,
                           f.FacFecha, tv.TvtTipo,
                           CONCAT(c.CliNombre, ' ', c.CliApellido) AS cliente
-                  FROM COBE_SOFT.inventario AS i
-                  INNER JOIN COBE_SOFT.producto AS p
+                  FROM inventario AS i
+                  INNER JOIN producto AS p
                   ON i.InvProId = p.ProId
-                  INNER JOIN COBE_SOFT.producto_factura AS pf
+                  INNER JOIN producto_factura AS pf
                   ON p.ProId = pf.ProFacProId
-                  INNER JOIN COBE_SOFT.factura AS f
+                  INNER JOIN factura AS f
                   ON pf.ProFacFacId = f.FacId
-                  INNER JOIN COBE_SOFT.tipo_venta AS tv
+                  INNER JOIN tipo_venta AS tv
                   ON f.FacTvtId = tv.TvtId
-                  INNER JOIN COBE_SOFT.cliente AS c
+                  INNER JOIN cliente AS c
                   ON f.FacCliId = c.CliId
                   WHERE i.InvId = $id
                   ORDER BY f.FacFecha";
@@ -177,14 +210,14 @@ class Consultas
                           ROUND(pp.ProPedPrecio,2) AS ProPedPrecio, pp.ProPedCantidad,
                           ROUND(pp.ProPedPrecio * pp.ProPedCantidad,2) AS total, pd.PedFecha,
                           CONCAT(u.UsrNombre, ' ', u.UsrApellido) AS responsable
-                  FROM COBE_SOFT.inventario AS i
-                  INNER JOIN COBE_SOFT.producto AS p
+                  FROM inventario AS i
+                  INNER JOIN producto AS p
                   ON i.InvProId = p.ProId
-                  INNER JOIN COBE_SOFT.producto_pedido AS pp
+                  INNER JOIN producto_pedido AS pp
                   ON p.ProId = pp.ProPedProId
-                  INNER JOIN COBE_SOFT.pedido AS pd
+                  INNER JOIN pedido AS pd
                   ON pp.ProPedPedId = pd.PedId
-                  INNER JOIN COBE_SOFT.usuario AS u
+                  INNER JOIN usuario AS u
                   ON pd.PedUsrId = u.UsrId
                   WHERE i.InvId = $id
                   ORDER BY pd.PedFecha";
