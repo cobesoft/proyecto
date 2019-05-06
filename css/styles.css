@@ -173,3 +173,7 @@ a.btn {
   -moz-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
 }
+
+span.mysize {
+  font-size: 1.5em;
+}

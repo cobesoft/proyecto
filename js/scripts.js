@@ -1,21 +1,48 @@
 $(document).ready(function() {
-  $(".opciones").click(function(e) {
-    e.preventDefault();
-    $("#formulario").load($(this).attr("href"), function() {
-    	renderMap();
-    });
-  });
+  cargaEventoOpciones();
 
   $("#login").bind('click', function(e){
     e.preventDefault();
     $("#custom_popup").load('pages/login.php', function() {
       $("#custom_popup").bPopup();
+      $("#loginBtn").bind('click', function(e){
+        e.preventDefault();
+        login();
+      });
     });
   });
 
   renderMap();
 });
 
+function cargaEventoOpciones() {
+  $(".opciones").click(function(e) {
+    e.preventDefault();
+    $("#formulario").load($(this).attr("href"), function() {
+      renderMap();
+    });
+  });
+}
+
+function login() {
+  $.ajax({
+    url: "src/valida_login.php",
+    method: "POST",
+    data: $("#loginForm").serialize(),
+    dataType: "json",
+    success: function (response) {
+      console.log(response);
+      $("#loginMsg").html(response.msg);
+      if(response.state)
+        setTimeout(function(){
+          /*$("#custom_popup").bPopup().close();
+          $("#navOpciones").html(response.options);
+          cargaEventoOpciones();*/
+          location.reload();
+        }, 2000);
+    }
+  });
+}
 
 function renderMap() {
 	$("img[usemap]").mapify({
@@ -85,4 +112,24 @@ function cargarDatosPopup(nombre, valor) {
 
 function listaOpciones(id, opcIds) {
   $('#'+id).chosen().val(opcIds.split(',')).trigger('chosen:updated');
+  $('#'+id).prop('disabled', true).trigger('chosen:updated');
+}
+
+function editaOpciones(id) {
+  if($('#opciones_e_'+id).text() == 'Opciones') {
+    $('#sel_'+id).prop('disabled', false).trigger('chosen:updated');
+    $('#opciones_e_'+id).text('Actualizar');
+  } else {
+    $('#sel_'+id).prop('disabled', true).trigger('chosen:updated');
+    $('#opciones_e_'+id).text('Opciones');
+    $.ajax({
+      url: "src/perfil_opciones_actualiza.php",
+      method: "POST",
+      data: {id: id, opc: $('#sel_'+id).val()},
+      //dataType: 'json',
+      success: function (response) {
+        console.log(response);
+      }
+    });
+  }
 }

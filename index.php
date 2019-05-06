@@ -1,3 +1,10 @@
+<?php
+session_start();
+include_once "config/consultas.php";
+include_once "config/permisos.php";
+$consulta = new Consultas();
+$permisos = new Permisos();
+?>
 <head>
     <title>Cobe Soft</title>
     <!-- <meta charset="utf-8"> -->
@@ -30,43 +37,10 @@
                                                           style="margin-top: -7px; max-width:100px;"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" id="navOpciones">
                         <li class="active"><a href="pages/inicio.php" class="opciones">Inicio</a></li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Inventarios<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="pages/inventario.php" class="opciones">Inventario General</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Productos<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="pages/gestion_producto.php" class="opciones">Gestión de Productos</a></li>
-                                <li><a href="pages/ventas.php" class="opciones">Reporte Ventas</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Proveedores<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="pages/gestion_proveedor.php" class="opciones">Gestión de Proveedores</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="pages/gestion_cliente.php" class="opciones">Gestión de Clientes</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span
-                                        class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="pages/gestion_usuario.php" class="opciones">Gestión de Usuarios</a></li>
-                                <li><a href="pages/perfil_opciones.php" class="opciones">Perfil - Opciónes</a></li>
-                            </ul>
-                        </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" id="navState">
                         <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a>
                         </li>
                     </ul>
@@ -93,4 +67,31 @@
         <p>2018.Derechos Reservados</p>
     </div>
 </div>
+<?php
+if (isset($_SESSION['id'])) {
+    $respuesta = $consulta->consultaUsuarios($_SESSION['id']);
+    $respuesta = $respuesta->fetchAll(PDO::FETCH_ASSOC);
+    $logout = "<li class='dropdown'>
+                    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                        <span class='glyphicon glyphicon-user mysize'></span> - ".
+                        $respuesta[0]['PerDescripcion'].
+                    " - </a>
+                    <ul class='dropdown-menu'>
+                        <li><span class='text-success'>Nombre: <strong>".$respuesta[0]['UsrNombre']."</strong></span></li>
+                        <li><span class='text-success'>Apellido: <strong>".$respuesta[0]['UsrApellido']."</strong></span></li>
+                        <li><a href='#' id='logout'><span class='glyphicon glyphicon-log-out'></span>Salir</a></li>";
+    $respuesta = $permisos->validaOpciones($respuesta);
+    echo "<script>
+            $(document).ready(function() {
+                $('#navOpciones').html(\"".preg_replace( "/\r|\n/", "", $respuesta['options'])."\");
+                $('#navState').html(\"".preg_replace( "/\r|\n/", "", $logout)."\");
+                $('#logout').bind('click', function(e) {
+                  e.preventDefault();
+                  document.location = 'pages/logout.php';
+                });
+                cargaEventoOpciones();
+            });
+        </script>";
+}
+?>
 </body>
