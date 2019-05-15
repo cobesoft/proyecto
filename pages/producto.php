@@ -6,7 +6,7 @@ $consulta = new Consultas();
 <div class="form-container">
     <div class="container">
         <h2 id="producto_titulo">Producto</h2>
-        <form action="index.php" method="post" id="custom-form">
+        <form id="producto" name="producto">
             <div class="row">
                 <div class="col-sm-2">
                     <div class="form-group">
@@ -93,7 +93,7 @@ $consulta = new Consultas();
             </div>
             <div class="row">
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary" id="producto_boton">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="producto_boton">Agregar</button>
                 </div>
             </div>
         </form>

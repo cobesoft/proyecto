@@ -15,6 +15,19 @@ $(document).ready(function() {
   renderMap();
 });
 
+function showSwal(title, type, text) {
+    Swal.fire({
+        title: title,
+        text: text,
+        type: type,
+        confirmButtonText: 'aceptar',
+        allowOutsideClick: false,
+        customClass: {
+            container: 'my-swal'
+        }
+    });
+}
+
 function cargaEventoOpciones() {
   $(".opciones").click(function(e) {
     e.preventDefault();
@@ -31,7 +44,6 @@ function login() {
     data: $("#loginForm").serialize(),
     dataType: "json",
     success: function (response) {
-      console.log(response);
       $("#loginMsg").html(response.msg);
       if(response.state)
         setTimeout(function(){
@@ -65,6 +77,10 @@ function mostrarModal(nombre, tipo, valor=null) {
         $("#custom_popup").bPopup();
         $("#"+nombre+"_titulo").text("Agregar " + nombre);
         $("#"+nombre+"_boton").text("Agregar nuevo " + nombre);
+        $("#"+nombre+"_boton").bind('click', function(e) {
+            e.preventDefault();
+            crudDatos('crea', nombre);
+        });
       });
       break;
     case 'e':
@@ -73,6 +89,10 @@ function mostrarModal(nombre, tipo, valor=null) {
         $("#"+nombre+"_titulo").text("Editar " + nombre);
         $("#"+nombre+"_boton").text("Guardar cambios en " + nombre);
         cargarDatosPopup(nombre, valor);
+        $("#"+nombre+"_boton").bind('click', function(e) {
+            e.preventDefault();
+            crudDatos('actualiza', nombre);
+        });
       });
       break;
     case 'el':
@@ -126,10 +146,33 @@ function editaOpciones(id) {
       url: "src/perfil_opciones_actualiza.php",
       method: "POST",
       data: {id: id, opc: $('#sel_'+id).val()},
-      //dataType: 'json',
+      dataType: 'json',
       success: function (response) {
-        console.log(response);
+        showSwal(response.title, response.type, response.text);
       }
     });
   }
+}
+
+function crudDatos(tipo, form) {
+    $.ajax({
+    url: "src/crud_"+form+".php",
+    method: "POST",
+    data: $("#"+form).serialize() + "&tipo="+tipo,
+    dataType: "json",
+    success: function (response) {
+        showSwal(response.title, response.type, response.text);
+        console.log(response.type);
+        if(response.type == 'success') {
+            $("#custom_popup").bPopup().close();
+            $("#formulario").load('pages/gestion_'+form+'.php')
+        }
+    }
+  });
+}
+
+function chbxClave() {
+    $('#UsrClave').prop('disabled', function () {
+        return !$('#UsrClave').prop('disabled');
+    });
 }

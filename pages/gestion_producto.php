@@ -28,7 +28,7 @@ $consulta = new Consultas();
           <?php
           $resultado = $consulta->consultaProductos();
           foreach($resultado as $row) {
-            echo "<tr>
+            echo "<tr class='".($row['ProEstId']==2?"warning":($row['ProEstId']==3?"danger":''))."'>
             <td>$row[ProId]</td>
             <td>$row[ProNombre]</td>
             <td>$row[ProPrecio]</td>

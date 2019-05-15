@@ -89,7 +89,7 @@ class Consultas
         }
     }
 
-    function consultaUsuarios($id = null, $usuario = null, $clave = null)
+    function consultaUsuarios($id = null, $usuario = null, $clave = null, $cedula = null)
     {
         try {
             $database = new Conexion();
@@ -108,9 +108,56 @@ class Consultas
                 $sql .= " AND u.UsrId = $id ";
             if ($usuario && $clave)
                 $sql .= " AND u.UsrUsuario = '$usuario' 
-                          AND u.UsrClave = MD5('$clave') ";
+                          AND u.UsrClave = MD5('$clave') 
+                          AND up.UsrPerEstId = 1 ";
+            if ($cedula)
+                $sql .= " AND u.UsrCedula = $cedula ";
             $sql .= " ORDER BY p.PerDescripcion, u.UsrApellido ";
             //echo $sql;
+            return $db->query($sql);
+        } catch (PDOException $e) {
+            die("Error: $e");
+        }
+    }
+    
+    function insertaUsuario($data)
+    {
+        try {
+            $database = new Conexion();
+            $db = $database->abrirConexion();
+            $sql = "INSERT INTO usuario (UsrCedula, UsrNombre, UsrApellido, UsrCorreo, UsrUsuario, UsrClave, UsrFecCreacion)
+                    VALUES ('$data[UsrCedula]','$data[UsrNombre]','$data[UsrApellido]','$data[UsrCorreo]','$data[UsrUsuario]',md5('$data[UsrCedula]'),now()) ";
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
+            $id = $db->lastInsertId();
+            $sql = "INSERT INTO usuario_perfil (UsrPerUsrId, UsrPerPerId, UsrPerEstId)
+                    VALUES ('$id', '$data[UsrPerPerId]', '$data[UsrPerEstId]') ";
+            return $db->query($sql);
+        } catch (PDOException $e) {
+            die("Error: $e");
+        }
+    }
+    
+    function actualizaUsuario($data)
+    {
+        try {
+            $database = new Conexion();
+            $db = $database->abrirConexion();
+            $sql = "UPDATE usuario SET
+                        UsrCedula = '$data[UsrCedula]',
+                        UsrNombre = '$data[UsrNombre]',
+                        UsrApellido = '$data[UsrApellido]',
+                        UsrCorreo = '$data[UsrCorreo]',
+                        UsrUsuario = '$data[UsrUsuario]' ";
+            if($data['chClave'] == 1)
+                $sql .= ", UsrClave = MD5('$data[UsrClave]') ";
+            $sql .= " WHERE UsrId = '$data[UsrId]' ";
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
+            $sql = "UPDATE usuario_perfil SET                    
+                    UsrPerPerId = '$data[UsrPerPerId]',
+                    UsrPerEstId = '$data[UsrPerEstId]' 
+                    WHERE UsrPerUsrId = '$data[UsrId]' ";
             return $db->query($sql);
         } catch (PDOException $e) {
             die("Error: $e");

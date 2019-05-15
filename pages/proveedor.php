@@ -6,7 +6,7 @@ $consulta = new Consultas();
 <div class="form-container">
     <div class="container">
         <h2 id="proveedor_titulo">Proveedor</h2>
-        <form action="index.php" method="post">
+        <form id="proveedor" name="proveedor">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
@@ -74,7 +74,7 @@ $consulta = new Consultas();
             </div>
             <div class="row">
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary" id="proveedor_boton">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="proveedor_boton">Agregar</button>
                 </div>
             </div>
         </form>

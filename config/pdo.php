@@ -5,6 +5,13 @@ class Conexion {
   private $server = 'mysql:host=localhost;port=3306;dbname=COBE_SOFT';
   private $username = 'root';
   private $password = '';
+  
+  // UNAD
+  /*
+  private $server = 'mysql:host=localhost;port=3306;dbname=id7537541_cobe_soft';
+  private $username = 'root';
+  private $password = 'V1s43_S3rv!d0r_Thr33';
+   */
 
   // web connection
   /*private $server = 'mysql:host=localhost;dbname=id7537541_cobe_soft';

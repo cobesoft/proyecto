@@ -177,3 +177,7 @@ a.btn {
 span.mysize {
   font-size: 1.5em;
 }
+
+.my-swal {
+  z-index: 10000;
+}

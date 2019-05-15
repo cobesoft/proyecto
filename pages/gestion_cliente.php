@@ -25,7 +25,7 @@ $consulta = new Consultas();
           <?php
           $resultado = $consulta->consultaClientes();
           foreach($resultado as $row) {
-            echo "<tr>
+            echo "<tr class='".($row['CliEstId']==2?"warning":($row['CliEstId']==3?"danger":''))."'>
             <td>$row[CliCedula]</td>
             <td>$row[nombre]</td>
             <td>$row[CliTelefono]</td>

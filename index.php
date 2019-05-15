@@ -18,6 +18,8 @@ $permisos = new Permisos();
     <script type="text/javascript" src="js/jquery.mapify.js"></script>
     <link rel="stylesheet" type="text/css" href="css/chosen.min.css">
     <script type="text/javascript" src="js/chosen.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
+    <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
