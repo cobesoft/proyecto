@@ -3,19 +3,22 @@ session_start();
 include_once "../config/consultas.php";
 $consulta = new Consultas();
 
-$_REQUEST['UsrId'] = isset($_REQUEST['UsrId']) && !empty($_REQUEST['UsrId'])?$_REQUEST['UsrId']:0;
-$_REQUEST['UsrCedula'] = isset($_REQUEST['UsrCedula']) && !empty($_REQUEST['UsrCedula'])?$_REQUEST['UsrCedula']:salidaMsg(0, 0, 'Cedula');
-$_REQUEST['UsrNombre'] = isset($_REQUEST['UsrNombre']) && !empty($_REQUEST['UsrNombre'])?$_REQUEST['UsrNombre']:salidaMsg(0, 0, 'Nombre');
-$_REQUEST['UsrApellido'] = isset($_REQUEST['UsrApellido']) && !empty($_REQUEST['UsrApellido'])?$_REQUEST['UsrApellido']:salidaMsg(0, 0, 'Apellido');
-$_REQUEST['UsrCorreo'] = isset($_REQUEST['UsrCorreo']) && !empty($_REQUEST['UsrCorreo'])?$_REQUEST['UsrCorreo']:salidaMsg(0, 0, 'Correo');
-$_REQUEST['UsrUsuario'] = isset($_REQUEST['UsrUsuario']) && !empty($_REQUEST['UsrUsuario'])?$_REQUEST['UsrUsuario']:salidaMsg(0, 0, 'Usuario');
-if(isset($_REQUEST['chClave'])) {
-    $_REQUEST['UsrClave'] = isset($_REQUEST['UsrClave']) && !empty($_REQUEST['UsrClave'])?$_REQUEST['UsrClave']:salidaMsg(0, 0, 'Password');
-    $_REQUEST['chClave'] = 1;
-} else
-    $_REQUEST['chClave'] = 0;
-$_REQUEST['UsrPerPerId'] = isset($_REQUEST['UsrPerPerId']) && !empty($_REQUEST['UsrPerPerId'])?$_REQUEST['UsrPerPerId']:salidaMsg(0, 0, 'Perfil');
-$_REQUEST['UsrPerEstId'] = isset($_REQUEST['UsrPerEstId']) && !empty($_REQUEST['UsrPerEstId'])?$_REQUEST['UsrPerEstId']:salidaMsg(0, 0, 'Estado');
+if ($_REQUEST['tipo'] != 'elimina') {
+    $_REQUEST['UsrId'] = isset($_REQUEST['UsrId']) && !empty($_REQUEST['UsrId']) ? $_REQUEST['UsrId'] : 0;
+    $_REQUEST['UsrCedula'] = isset($_REQUEST['UsrCedula']) && !empty($_REQUEST['UsrCedula']) ? $_REQUEST['UsrCedula'] : salidaMsg(0, 0, 'Cedula');
+    $_REQUEST['UsrNombre'] = isset($_REQUEST['UsrNombre']) && !empty($_REQUEST['UsrNombre']) ? $_REQUEST['UsrNombre'] : salidaMsg(0, 0, 'Nombre');
+    $_REQUEST['UsrApellido'] = isset($_REQUEST['UsrApellido']) && !empty($_REQUEST['UsrApellido']) ? $_REQUEST['UsrApellido'] : salidaMsg(0, 0, 'Apellido');
+    $_REQUEST['UsrCorreo'] = isset($_REQUEST['UsrCorreo']) && !empty($_REQUEST['UsrCorreo']) ? $_REQUEST['UsrCorreo'] : salidaMsg(0, 0, 'Correo');
+    $_REQUEST['UsrUsuario'] = isset($_REQUEST['UsrUsuario']) && !empty($_REQUEST['UsrUsuario']) ? $_REQUEST['UsrUsuario'] : salidaMsg(0, 0, 'Usuario');
+    if (isset($_REQUEST['chClave'])) {
+        $_REQUEST['UsrClave'] = isset($_REQUEST['UsrClave']) && !empty($_REQUEST['UsrClave']) ? $_REQUEST['UsrClave'] : salidaMsg(0, 0, 'Password');
+        $_REQUEST['chClave'] = 1;
+    } else {
+        $_REQUEST['chClave'] = 0;
+    }
+    $_REQUEST['UsrPerPerId'] = isset($_REQUEST['UsrPerPerId']) && !empty($_REQUEST['UsrPerPerId']) ? $_REQUEST['UsrPerPerId'] : salidaMsg(0, 0, 'Perfil');
+    $_REQUEST['UsrPerEstId'] = isset($_REQUEST['UsrPerEstId']) && !empty($_REQUEST['UsrPerEstId']) ? $_REQUEST['UsrPerEstId'] : salidaMsg(0, 0, 'Estado');
+}
 
 switch ($_REQUEST['tipo']) {
     case 'crea':
@@ -30,6 +33,8 @@ switch ($_REQUEST['tipo']) {
         salidaMsg (1, 2, $_REQUEST['tipo']);
         break;
     case 'elimina':
+        $resultado = $consulta->eliminaUsuario($_REQUEST);
+        salidaMsg (1, 2, $_REQUEST['tipo']);
         break;
 }
 

@@ -126,7 +126,7 @@ class Consultas
             $database = new Conexion();
             $db = $database->abrirConexion();
             $sql = "INSERT INTO usuario (UsrCedula, UsrNombre, UsrApellido, UsrCorreo, UsrUsuario, UsrClave, UsrFecCreacion)
-                    VALUES ('$data[UsrCedula]','$data[UsrNombre]','$data[UsrApellido]','$data[UsrCorreo]','$data[UsrUsuario]',md5('$data[UsrCedula]'),now()) ";
+                    VALUES ('$data[UsrCedula]','$data[UsrNombre]','$data[UsrApellido]','$data[UsrCorreo]','$data[UsrUsuario]',MD5('$data[UsrCedula]'),NOW()) ";
             $stmt = $db->prepare($sql);
             $stmt->execute();
             $id = $db->lastInsertId();
@@ -158,6 +158,20 @@ class Consultas
                     UsrPerPerId = '$data[UsrPerPerId]',
                     UsrPerEstId = '$data[UsrPerEstId]' 
                     WHERE UsrPerUsrId = '$data[UsrId]' ";
+            return $db->query($sql);
+        } catch (PDOException $e) {
+            die("Error: $e");
+        }
+    }
+
+    function eliminaUsuario($data)
+    {
+        try {
+            $database = new Conexion();
+            $db = $database->abrirConexion();
+            $sql = "UPDATE usuario_perfil SET                    
+                    UsrPerEstId = 3 
+                    WHERE UsrPerUsrId = '$data[id]' ";
             return $db->query($sql);
         } catch (PDOException $e) {
             die("Error: $e");

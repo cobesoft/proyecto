@@ -4,7 +4,7 @@
     <hr>
     <form>
         <p id="texto_eliminar">¿Desea eliminar?</p>
-        <button type="submit" class="btn btn-primary">Eliminar</button>
+        <button type="submit" id="elimina" class="btn btn-primary">Eliminar</button>
         <button class="btn btn-secondary" id="cerrar">Cancelar</button>
     </form>
 </div>

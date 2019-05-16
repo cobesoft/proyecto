@@ -103,6 +103,10 @@ function mostrarModal(nombre, tipo, valor=null) {
         $("#cerrar").bind('click', function() {
           $("#custom_popup").bPopup().close();
         });
+          $("#elimina").bind('click', function(e) {
+              e.preventDefault();
+              crudDatos('elimina', nombre, valor);
+          });
       });
       break;
     case 'l':
@@ -154,15 +158,15 @@ function editaOpciones(id) {
   }
 }
 
-function crudDatos(tipo, form) {
+function crudDatos(tipo, form, id=null) {
+    var data = $("#"+form).length?$("#"+form).serialize():"id="+id;
     $.ajax({
     url: "src/crud_"+form+".php",
     method: "POST",
-    data: $("#"+form).serialize() + "&tipo="+tipo,
+    data: data + "&tipo="+tipo,
     dataType: "json",
     success: function (response) {
         showSwal(response.title, response.type, response.text);
-        console.log(response.type);
         if(response.type == 'success') {
             $("#custom_popup").bPopup().close();
             $("#formulario").load('pages/gestion_'+form+'.php')

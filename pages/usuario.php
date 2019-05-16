@@ -57,14 +57,11 @@ $consulta = new Consultas();
                         <div class="form-group">
                             <label for="UsrClave">Password</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="checkbox" name="chClave" id="chClave" onclick="chbxClave();">
-                                        <input type="password" class="form-control" id="UsrClave" name="UsrClave" disabled>
-                                    </div>
-                                </div>
+                                <span class="input-group-addon">
+                                    <input type="checkbox" name="chClave" id="chClave" onclick="chbxClave();">
+                                </span>
+                                <input type="password" class="form-control" id="UsrClave" name="UsrClave" disabled>
                             </div>
-
                         </div>
                     </div>
                 </div>

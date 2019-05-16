@@ -43,7 +43,7 @@ function listaMovimientos($id, $campos, $tipo) {
   $resultado = $GLOBALS['consulta']->consultaMovimiento($id, $tipo);
   if ($resultado->rowCount()) {
     echo "<div class='table-responsive'>
-    <table class='table table-striped'>
+    <table class='table table-hover'>
     <thead>
     <tr>";
     foreach ($campos as $campo) {

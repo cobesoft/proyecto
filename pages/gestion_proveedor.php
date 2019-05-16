@@ -10,7 +10,7 @@ $consulta = new Consultas();
       <span><strong>Nuevo</strong></span>
     </a></h2>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>NIT</th>
